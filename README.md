@@ -1,44 +1,56 @@
-# Desafio N°7 Refactor a nuestro login
+# Desafio N°11 Implementación de logger
 
 ## LEIBLICH Ezequiel Gaston
 
 ## Comisión 43345 - Programación Backend
 
+----------------------------------------------------
 
-Reestructura de nuestro servidor
+# Implementación de Logger en Proyecto
 
-Este repositorio contiene el trabajo terminado de la reestructura del servidor, basado en un modelo de capas para una mejor organización y separación de responsabilidades.
+En este repositorio, hemos implementado un sistema de registro (logger) en base a las directrices proporcionadas para mejorar la gestión de información y monitoreo en el proyecto principal.
 
-Descripción:
+## Definición de Niveles de Registro
 
-El proyecto ha sido reorganizado en diferentes capas, siguiendo las mejores prácticas de desarrollo:
+Hemos establecido un sistema de niveles con la siguiente jerarquía de prioridades (de menor a mayor):
 
-1. Capa de Routing: Encargada de manejar las rutas de la aplicación y la comunicación con el cliente. Aquí se definen los endpoints y se gestionan las peticiones HTTP.
+*debug
+*http
+*info
+*advertencia
+*error
+*fatal
 
-2. Capa de Controlador: Responsable de la lógica de negocio y operaciones. Aquí se realizan las operaciones necesarias para completar las tareas solicitadas, y se comunica con la capa de Persistencia.
+## Logger para Desarrollo y Producción
 
-3. Capa de DAO (Data Access Object): Encargada de la conexión y gestión de datos en la base de datos o sistema de persistencia. Aquí se accede a los datos y se realizan operaciones CRUD (Crear, Leer, Actualizar, Eliminar) necesarias.
+Hemos configurado un logger específico para el entorno de desarrollo y otro para el entorno de producción:
 
-4. Vistas: Las vistas están correctamente separadas y organizadas. Se han implementado modelos de capas para asegurar una correcta delegación de responsabilidades.
+## Desarrollo
 
-Configuración de Variables de Entorno
+El logger de desarrollo registra a partir del nivel "debug" y muestra los registros en la consola.
 
-Todas las partes importantes y datos comprometidos se han movido a un archivo .env para mantenerlos seguros y proteger información sensible. Además, se ha implementado un archivo config.js para leer las variables de entorno y configurar el proyecto adecuadamente.
+## Producción
 
-Instrucciones
+El logger de producción registra a partir del nivel "info" y almacena los registros en un archivo de transporte llamado "errors.log" a partir del nivel de error.
 
-Para ejecutar el proyecto, sigue los siguientes pasos:
+## Uso del Logger
 
-1. Clona este repositorio en tu máquina local.
+Hemos integrado registros significativos en puntos clave del servidor, como errores y advertencias. Hemos modificado los console.log() estándar para que muestren información utilizando el módulo winston.
 
-2. Crea un archivo .env y coloca en él las variables de entorno necesarias, como credenciales de la base de datos o claves de acceso.
+## Endpoint /loggerTest
 
-3. Configura el archivo config.js para leer las variables de entorno y establecer la configuración del proyecto.
+Hemos agregado un endpoint /loggerTest que te permite probar todos los registros implementados, permitiendo verificar su funcionamiento y evaluar la eficacia de la configuración del logger.
 
-4. Instala las dependencias necesarias ejecutando npm install.
+## Instrucciones:
 
-5. Ejecuta el servidor con npm start o el comando que corresponda según tu configuración.
+1 - Clona este repositorio en tu máquina local.
 
-¡Listo! El proyecto se ejecutará con la nueva estructura de capas y las variables de entorno configuradas de manera segura.
+2 - Configura las variables de entorno en un archivo .env si es necesario.
 
-¡Gracias por revisar este proyecto reestructurado!
+3 - Instala las dependencias requeridas utilizando npm install.
+
+4 - Ejecuta el servidor con npm start o el comando correspondiente a tu configuración.
+
+5 - Accede a través del navegador al endpoint /loggerTest para probar los registros implementados.
+
+¡Gracias por revisar este trabajo mejorado en mi proyecto con la integración de un sistema de logger! Si tienes preguntas o necesitas ayuda, no dudes en contactarme.
