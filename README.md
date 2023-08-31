@@ -52,6 +52,6 @@ Hemos agregado un punto final /loggerTestque te permite probar todos los registr
 
 5 - Ejecuta el servidor con npm start.
 
-5 - Acceda a través del navegador al endpoint /loggerTestpara probar los registros implementados.
+5 - Acceda a través del navegador al endpoint /loggerTest para probar los registros implementados.
 
 ¡Gracias por revisar este trabajo mejorado con la integración de un sistema de logger! Si tienes preguntas o necesitas ayuda, no dudes en contactarme.
