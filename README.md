@@ -1,46 +1,57 @@
-# Desafio N°7 Refactor a nuestro login
+# Desafio N°11 Implementación de Logger en Proyecto
 
 ## LEIBLICH Ezequiel Gaston
 
 ## Comisión 43345 - Programación Backend
 
+------------------------------------------------------
 
-Reestructura de nuestro servidor
+## Implementación de Logger en Proyecto
 
-Este repositorio contiene el trabajo terminado de la reestructura del servidor, basado en un modelo de capas para una mejor organización y separación de responsabilidades.
+En este repositorio, hemos implementado un sistema de registro (logger) en base a las directrices proporcionadas para mejorar la gestión de información y monitoreo en el proyecto principal.
 
-Descripción:
+## Definición de niveles de registro
+Hemos establecido un sistema de niveles con la siguiente jerarquía de prioridades (de menor a mayor):
 
-El proyecto ha sido reorganizado en diferentes capas, siguiendo las mejores prácticas de desarrollo:
+* depurar
+* http
+* información
+* advertencia
+* error
+* fatal
 
-1. Capa de Routing: Encargada de manejar las rutas de la aplicación y la comunicación con el cliente. Aquí se definen los endpoints y se gestionan las peticiones HTTP.
+## Logger para Desarrollo y Producción
 
-2. Capa de Controlador: Responsable de la lógica de negocio y operaciones. Aquí se realizan las operaciones necesarias para completar las tareas solicitadas, y se comunica con la capa de Persistencia.
+Hemos configurado un registrador específico para el entorno de desarrollo y otro para el entorno de producción:
 
-3. Capa de DAO (Data Access Object): Encargada de la conexión y gestión de datos en la base de datos o sistema de persistencia. Aquí se accede a los datos y se realizan operaciones CRUD (Crear, Leer, Actualizar, Eliminar) necesarias.
+### Desarrollo
 
-4. Vistas: Las vistas están correctamente separadas y organizadas. Se han implementado modelos de capas para asegurar una correcta delegación de responsabilidades.
+El registrador de desarrollo registra a partir del nivel "debug" y muestra los registros en la consola.
 
-Configuración de Variables de Entorno
+### Producción
 
-Todas las partes importantes y datos comprometidos se han movido a un archivo .env para mantenerlos seguros y proteger información sensible. Además, se ha implementado un archivo config.js para leer las variables de entorno y configurar el proyecto adecuadamente.
+El registrador de producción registra desde el nivel "info" y almacena los registros en un archivo de transporte llamado "errors.log" desde el nivel de error.
 
-Instrucciones
+## Uso del registrador
 
-Para ejecutar el proyecto, sigue los siguientes pasos:
+Hemos integrado registros significativos en puntos clave del servidor, como errores y advertencias. Hemos modificado los console.log()estándares para que muestren información utilizando el módulo winston.
 
-1. Clona este repositorio en tu máquina local.
+## Punto final /loggerTest
 
-2. Crea un archivo .env y coloca en él las variables de entorno necesarias, como credenciales de la base de datos o claves de acceso.
+Hemos agregado un punto final /loggerTestque te permite probar todos los registros implementados, permitiendo verificar su funcionamiento y evaluar la eficacia de la configuración del registrador.
 
-3. Configura el archivo config.js para leer las variables de entorno y establecer la configuración del proyecto.
+## Instrucciones:
 
-4. Instala las dependencias necesarias ejecutando npm install.
+1 - Clona este repositorio en tu máquina local.
 
-5. Cargar variables de entorno, antes de levantar el servidor: npm run dev-D : npm run dev-P
+2 - Configure las variables de entorno en un archivo .env si es necesario.
 
-6. Ejecuta el servidor con npm start.
+3 - Instale las dependencias requeridas utilizando npm install.
 
-¡Listo! El proyecto se ejecutará con la nueva estructura de capas y las variables de entorno configuradas de manera segura.
+4 - Cargar variables de entorno, antes de levantar el servidor: npm run dev-D : npm run dev-P
 
-¡Gracias por revisar este proyecto reestructurado!
+5 - Ejecuta el servidor con npm start.
+
+5 - Acceda a través del navegador al endpoint /loggerTestpara probar los registros implementados.
+
+¡Gracias por revisar este trabajo mejorado con la integración de un sistema de logger! Si tienes preguntas o necesitas ayuda, no dudes en contactarme.
