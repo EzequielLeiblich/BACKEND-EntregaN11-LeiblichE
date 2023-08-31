@@ -104,18 +104,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// LOGGER
-
-app.get("/loggerTest", async (req, res) => {
-  req.logger.fatal("Test de Logger - Level: 'fatal'");
-  req.logger.error("Test de Logger - Level: 'error'");
-  req.logger.warning("Test de Logger - Level: 'warning'");
-  req.logger.info("Test de Logger - Level: 'info'");
-  req.logger.http("Test de Logger - Level: 'http'");
-  req.logger.debug("Test de Logger - Level: 'debug'");
-  res.send("Se termino de probar el logger exitosamente");
-});
-
 // ROUTES
 
 app.use(addLogger);
